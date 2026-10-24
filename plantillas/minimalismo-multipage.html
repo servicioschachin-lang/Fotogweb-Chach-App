@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claro Estudio | Estudio fotográfico (Sitio multipágina)</title>
+<meta name="description" content="Claro Estudio: estudio fotográfico de retratos, bodas, moda y producto.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={corePlugins:{preflight:false,visibility:false,container:false}}</script>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{transition:color .2s}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.s-section{padding:96px 0}
+.s-head{max-width:640px;margin-bottom:48px}
+.s-head.center{margin-inline:auto;text-align:center}
+.s-title{margin:0 0 14px}
+.s-sub{margin:0}
+.page{display:none}.page.active{display:block}
+.hero{position:relative;min-height:100vh;display:flex;align-items:center}
+.hero-grid{position:relative;z-index:1;width:100%}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gallery{display:grid;gap:16px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:768px){.gallery{grid-template-columns:repeat(3,1fr)}}
+.g-item{display:block;position:relative;overflow:hidden;cursor:zoom-in}
+.g-item img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/5;transition:transform .5s}
+.g-item:hover img{transform:scale(1.04)}
+.is-hidden{display:none!important}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.filt{font:inherit;cursor:pointer;padding:9px 20px;background:transparent;color:inherit;border:1px solid currentColor}
+.plist{list-style:none;padding:0;margin:18px 0 26px;display:grid;gap:10px}
+.plist li{display:flex;gap:10px}
+.tag{display:inline-block;font-size:.8rem;font-weight:700;padding:4px 12px;margin-bottom:12px}
+.amount{margin:6px 0 0;font-size:2.6rem;line-height:1.1}.amount small{font-size:1rem;opacity:.7}
+.who{display:flex;align-items:center;gap:12px;margin-top:20px}
+.who span{display:block;font-size:.88rem;opacity:.75}
+.avatar{width:48px;height:48px;border-radius:50%;object-fit:cover}
+.steps{list-style:none;padding:0;margin:28px 0 0;counter-reset:st}
+.steps li{counter-increment:st;display:grid;grid-template-columns:48px 1fr;gap:0 16px;padding:12px 0;align-items:center}
+.steps li::before{content:counter(st);grid-row:span 2;display:grid;place-items:center;width:44px;height:44px}
+.steps li span{opacity:.8}
+.steps-wide{display:grid;gap:12px 40px}
+@media(min-width:768px){.steps-wide{grid-template-columns:1fr 1fr}}
+.team img{width:100%;aspect-ratio:1/1;object-fit:cover;margin-bottom:18px}
+.about-img img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.s-label{display:block;margin-bottom:6px;font-weight:600;font-size:.92rem}
+.s-input{width:100%;padding:13px 16px;font:inherit;color:inherit;display:block}
+.clist{list-style:none;padding:0;margin:18px 0 24px;display:grid;gap:14px}
+.clist li{display:flex;gap:12px;align-items:flex-start}
+.ok{margin:14px 0 0;font-weight:700}
+.band{position:relative;overflow:hidden;padding:120px 0;color:#fff}
+.band-shade{position:absolute;inset:0;background:rgba(0,0,0,.5)}
+.band-in{position:relative;z-index:1}
+.band-in p{max-width:520px;margin:0 0 28px}
+.page-hero{position:relative;overflow:hidden;padding:150px 0 80px}
+.ph-shade{position:absolute;inset:0}
+.ph-in{position:relative;z-index:1}
+.ph-in h1{margin:0 0 12px}.ph-in p{margin:0;max-width:560px}
+.foot{padding:72px 0 28px}
+.foot h4{font-size:1.1rem;margin-bottom:16px}
+.flinks{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.flinks a{text-decoration:none;color:inherit;opacity:.85}.flinks a:hover{opacity:1}
+.copy{margin:48px 0 0;font-size:.9rem;opacity:.7}
+.soc-row{display:flex;gap:10px;flex-wrap:wrap}
+.soc{display:inline-grid;place-items:center;width:42px;height:42px;text-decoration:none;font-size:1.1rem}
+.s-brand{display:inline-flex;align-items:center;gap:10px}
+.navbar-toggler{border:0;box-shadow:none!important}
+:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+.s-modal{background:transparent;border:0;position:relative}
+.s-close{position:absolute;right:10px;top:10px;z-index:2;background-color:#fff;opacity:1;padding:10px;border-radius:50%}
+.s-modal img{max-height:86vh;object-fit:contain}
+@media(max-width:767px){.s-section{padding:68px 0}.hero{padding-top:90px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+:root{--ink:#161a18;--mut:#6b726e;--line:#e2e5e1;--ac:#4b6b5c;--alt:#f4f5f3}
+body{font-family:'Jost',sans-serif;background:#fff;color:var(--ink);font-weight:400;line-height:1.7}
+h1,h2,h3,h4,.s-brand{font-family:'Cormorant Garamond',serif;font-weight:500;letter-spacing:-.01em;color:var(--ink)}
+.s-nav{background:rgba(255,255,255,.93);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:14px 0}
+.s-brand{font-size:1.7rem;text-decoration:none}.s-brand i{font-size:.9rem;color:var(--ac)}
+.nav-link{color:var(--mut)!important;font-size:.95rem;padding:6px 14px!important}
+.nav-link:hover,.nav-link.active{color:var(--ink)!important;text-decoration:underline;text-underline-offset:8px;text-decoration-thickness:1px}
+.s-toggler{font-size:1.9rem;color:var(--ink)}
+@media(max-width:991px){.navbar-collapse{border-top:1px solid var(--line);margin-top:12px;padding:12px 0}}
+.s-btn{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;background:var(--ink);color:#fff;text-decoration:none;border:1px solid var(--ink);font-size:.95rem;transition:background .3s,color .3s;font-family:inherit}
+.s-btn:hover{background:transparent;color:var(--ink)}
+.s-btn-alt{background:transparent;color:var(--ink)}.s-btn-alt:hover{background:var(--ink);color:#fff}
+.s-btn-sm{padding:8px 22px}
+.hero-min{min-height:100vh;display:grid;padding-top:68px;align-items:stretch}
+@media(min-width:992px){.hero-min{grid-template-columns:5fr 7fr}}
+.hm-text{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:60px 6vw}
+.hm-text h1{font-size:clamp(3rem,6.5vw,5.6rem);line-height:.98;font-weight:400;margin:0 0 24px}
+.hm-lead{color:var(--mut);font-size:1.15rem;max-width:420px;margin-bottom:34px}
+.hm-cap{font-size:.88rem;color:var(--mut);margin:56px 0 0}
+.hm-img{position:relative;min-height:55vh}.hm-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.s-section:nth-of-type(even){background:var(--alt)}
+.s-title{font-size:clamp(2.3rem,4.2vw,3.5rem);font-weight:400}.s-sub{color:var(--mut);font-size:1.1rem}
+.s-card{padding:0 0 28px;border-bottom:1px solid var(--line)}
+.s-card h3{font-size:1.7rem}.s-card p{margin:0;color:var(--mut)}
+.s-ico{display:block;font-size:1.5rem;color:var(--ac);margin-bottom:14px}
+.price{padding:34px;border:1px solid var(--line);background:#fff}.price.feat{border-color:var(--ink)}
+.tag{background:var(--ac);color:#fff}.amount{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:400}.plist i{color:var(--ac)}.plist{color:var(--mut)}
+.gallery{gap:28px}.g-item img{aspect-ratio:3/4}
+.gallery:not(.full) .g-item:nth-child(3n+2){margin-top:48px}
+.filters{gap:24px}.filt{border:0;padding:4px 0;border-bottom:1px solid transparent;color:var(--mut)}.filt.active{color:var(--ink);border-bottom-color:var(--ink)}
+.quote{border-bottom:0;padding:0}.quote p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.5rem;line-height:1.4}
+.steps li{border-top:1px solid var(--line)}
+.steps li::before{font-family:'Cormorant Garamond',serif;font-size:1.9rem;color:var(--ac);justify-content:start}
+.about-img img{aspect-ratio:3/4}
+.team{padding-bottom:0;border:0}.team img{aspect-ratio:3/4}
+.s-input{border:0;border-bottom:1px solid var(--ink);background:transparent;border-radius:0;padding:12px 0}
+.s-input:focus{outline:0;border-bottom-color:var(--ac);box-shadow:0 1px 0 var(--ac)}.form,.info{border:0}
+.s-label{color:var(--mut);font-weight:400}.clist i{color:var(--ac)}
+.soc{border:1px solid var(--ink);border-radius:50%;color:var(--ink)}.soc:hover{background:var(--ink);color:#fff}
+.band{padding:170px 0;text-align:center}.band-shade{background:rgba(10,14,12,.42)}
+.band .s-title{color:#fff;max-width:760px;margin-inline:auto}.band-in p{margin-inline:auto}
+.band .s-btn{background:#fff;color:var(--ink);border-color:#fff}.band .s-btn:hover{background:transparent;color:#fff}
+.page-hero{padding:150px 0 64px;border-bottom:1px solid var(--line)}.ph-bg,.ph-shade{display:none}
+.page-hero h1{font-size:clamp(3rem,7vw,5.5rem);font-weight:400}.page-hero p{color:var(--mut);font-size:1.15rem}
+.foot{border-top:1px solid var(--line);color:var(--mut)}.foot h4{color:var(--ink)}
+</style>
+</head>
+<body class="st-min">
+<nav class="navbar navbar-expand-lg fixed-top s-nav">
+<div class="container-xl">
+<a class="navbar-brand s-brand" href="#inicio"><i class="bi bi-circle"></i><span>Claro Estudio</span></a>
+<button class="navbar-toggler s-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Abrir menú"><i class="bi bi-list"></i></button>
+<div class="collapse navbar-collapse" id="nav">
+<ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1"><li class="nav-item"><a class="nav-link" data-nav="inicio" href="#inicio">Inicio</a></li><li class="nav-item"><a class="nav-link" data-nav="servicios" href="#servicios">Servicios</a></li><li class="nav-item"><a class="nav-link" data-nav="portafolio" href="#portafolio">Portafolio</a></li><li class="nav-item"><a class="nav-link" data-nav="nosotros" href="#nosotros">Nosotros</a></li><li class="nav-item"><a class="nav-link" data-nav="contacto" href="#contacto">Contacto</a></li>
+<li class="nav-item ms-lg-3 mt-3 mt-lg-0"><a class="s-btn s-btn-sm" href="#contacto">Reservar</a></li></ul>
+</div></div></nav>
+<div class="page" data-page="inicio"><header class="hero hero-min">
+<div class="hm-text">
+<h1>Fotografía que respira</h1>
+<p class="hm-lead">Retratos, bodas y editorial con luz natural y mucho espacio. Sin artificios: solo la imagen justa.</p>
+<div class="flex flex-wrap gap-3"><a class="s-btn" href="#contacto">Reservar sesión</a><a class="s-btn s-btn-alt" href="#portafolio">Ver portafolio</a></div>
+<p class="hm-cap">Estudio con luz norte · Cita previa</p>
+</div>
+<div class="hm-img"><img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=1600&q=70" alt="Fotógrafo con cámara al atardecer"></div>
+</header><section class="s-section "><div class="wrap"><header class="s-head"><h2 class="s-title">Servicios</h2><p class="s-sub">Sesiones pensadas a tu medida, con luz cuidada y entrega puntual.</p></header><div class="row g-4"><div class="col-md-6 col-lg-4"><article class="s-card h-100"><span class="s-ico"><i class="bi bi-person-bounding-box"></i></span><h3>Retratos</h3><p>Sesiones individuales en estudio o exterior con iluminación cuidada.</p></article></div><div class="col-md-6 col-lg-4"><article class="s-card h-100"><span class="s-ico"><i class="bi bi-heart"></i></span><h3>Bodas</h3><p>Cobertura completa del día, desde los preparativos hasta la fiesta.</p></article></div><div class="col-md-6 col-lg-4"><article class="s-card h-100"><span class="s-ico"><i class="bi bi-bag-heart"></i></span><h3>Moda y editorial</h3><p>Lookbooks, campañas y books para modelos y marcas.</p></article></div></div><div class="mt-5"><a class="s-btn s-btn-alt" href="#servicios">Ver todos los servicios</a></div></div></section><section class="s-section s-gal"><div class="wrap"><header class="s-head"><h2 class="s-title">Portafolio</h2><p class="s-sub">Una selección de nuestras sesiones más recientes.</p></header><div class="gallery"><a class="g-item" href="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1400&q=70" data-bs-toggle="modal" data-bs-target="#lb" data-full="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1400&q=70" data-cat="retrato" aria-label="Ampliar: Retrato de estudio"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=70" alt="Retrato de estudio" loading="lazy"></a><a class="g-item" href="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=70" data-bs-toggle="modal" data-bs-target="#lb" data-full="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=70" data-cat="boda" aria-label="Ampliar: Sesión de boda"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=70" alt="Sesión de boda" loading="lazy"></a><a class="g-item" href="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1400&q=70" data-bs-toggle="modal" data-bs-target="#lb" data-full="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1400&q=70" data-cat="moda" aria-label="Ampliar: Editorial de moda"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=70" alt="Editorial de moda" loading="lazy"></a><a class="g-item" href="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1400&q=70" data-bs-toggle="modal" data-bs-target="#lb" data-full="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1400&q=70" data-cat="paisaje" aria-label="Ampliar: Paisaje de montaña"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=70" alt="Paisaje de montaña" loading="lazy"></a><a class="g-item" href="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1400&q=70" data-bs-toggle="modal" data-bs-target="#lb" data-full="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1400&q=70" data-cat="retrato" aria-label="Ampliar: Retrato masculino"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=70" alt="Retrato masculino" loading="lazy"></a><a class="g-item" href="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1400&q=70" data-bs-toggle="modal" data-bs-target="#lb" data-full="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1400&q=70" data-cat="boda" aria-label="Ampliar: Pareja al atardecer"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=70" alt="Pareja al atardecer" loading="lazy"></a></div><div class="mt-5"><a class="s-btn s-btn-alt" href="#portafolio">Ver portafolio completo</a></div></div></section><section class="band"><img class="hero-bg" src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1600&q=70" alt="" loading="lazy"><div class="band-shade"></div>
+<div class="wrap band-in"><h2 class="s-title">Tu próxima fotografía empieza con una conversación</h2><p>Reserva tu sesión esta semana y recibe una galería online privada.</p>
+<a class="s-btn" href="#contacto"><i class="bi bi-camera"></i> Reservar ahora</a></div></section></div><div class="page" data-page="servicios"><header class="page-hero"><img class="hero-bg ph-bg" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1600&q=70" alt=""><div class="ph-shade"></div>
+<div class="wrap ph-in"><h1>Servicios</h1><p>Todo lo que podemos capturar para ti.</p></div></header><section class="s-section "><div class="wrap"><header class="s-head"><h2 class="s-title">Servicios</h2><p class="s-sub">Sesiones pensadas a tu medida, con luz cuidada y entrega puntual.</p></header><div class="row g-4"><div class="col-md-6 col-lg-4"><article class="s-card h-100"><span class="s-ico"><i class="bi bi-person-bounding-box"></i></span><h3>Retratos</h3><p>Sesiones individuales en estudio o exterior con iluminación cuidada.</p></article></div><div class="col-md-6 col-lg-4"><article class="s-card h-100"><span class="s-ico"><i class="bi bi-heart"></i></span><h3>Bodas</h3><p>Cobertura completa del día, desde los preparativos hasta la fiesta.</p></article></div><div class="col-md-6 col-lg-4"><article class="s-card h-100"><span class="s-ico"><i class="bi bi-bag-heart"></i></span><h3>Moda y editorial</h3><p>Lookbooks, campañas y books para modelos y marcas.</p></article></div><div class="col-md-6 col-lg-4"><article class="s-card h-100"><span class="s-ico"><i class="bi bi-box-seam"></i></span><h3>Producto</h3><p>Fotografía limpia para catálogos, tiendas online y redes.</p></article></div><div class="col-md-6 col-lg-4"><article class="s-card h-100"><span class="s-ico"><i class="bi bi-people"></i></span><h3>Familia y maternidad</h3><p>Recuerdos espontáneos para toda la familia, en un ambiente relajado.</p></article></div><div class="col-md-6 col-lg-4"><article class="s-card h-100"><span class="s-ico"><i class="bi bi-calendar-event"></i></span><h3>Eventos</h3><p>Cumpleaños, graduaciones y reuniones corporativas.</p></article></div></div></div></section><section class="s-section "><div class="wrap"><header class="s-head"><h2 class="s-title">Cómo trabajamos</h2><p class="s-sub">Cuatro pasos simples, de la reserva a la entrega.</p></header><ol class="steps steps-wide"><li><strong>Reserva</strong><span>Elige fecha y paquete; te confirmamos en un día.</span></li><li><strong>Sesión</strong><span>Te guiamos en poses y expresiones para que te veas natural.</span></li><li><strong>Edición</strong><span>Revelamos y retocamos cada imagen con cuidado.</span></li><li><strong>Entrega</strong><span>Recibes tu galería online lista para descargar y compartir.</span></li></ol></div></section><section class="s-section "><div class="wrap"><header class="s-head"><h2 class="s-title">Paquetes</h2><p class="s-sub">Precios de referencia; ajustamos cada sesión a tus necesidades.</p></header><div class="row g-4"><div class="col-lg-4"><article class="s-card price h-100"><h3>Esencial</h3><p class="amount">$120<small> /sesión</small></p><ul class="plist"><li><i class="bi bi-check2"></i><span>1 hora de sesión</span></li><li><i class="bi bi-check2"></i><span>20 fotos editadas</span></li><li><i class="bi bi-check2"></i><span>Galería online privada</span></li></ul><a class="s-btn s-btn-alt" href="#contacto">Elegir Esencial</a></article></div><div class="col-lg-4"><article class="s-card price h-100 feat"><span class="tag">Más elegido</span><h3>Signature</h3><p class="amount">$260<small> /sesión</small></p><ul class="plist"><li><i class="bi bi-check2"></i><span>2 horas de sesión</span></li><li><i class="bi bi-check2"></i><span>50 fotos editadas</span></li><li><i class="bi bi-check2"></i><span>2 cambios de vestuario</span></li><li><i class="bi bi-check2"></i><span>Álbum digital</span></li></ul><a class="s-btn" href="#contacto">Elegir Signature</a></article></div><div class="col-lg-4"><article class="s-card price h-100"><h3>Completo</h3><p class="amount">$480<small> /sesión</small></p><ul class="plist"><li><i class="bi bi-check2"></i><span>Media jornada</span></li><li><i class="bi bi-check2"></i><span>100 fotos editadas</span></li><li><i class="bi bi-check2"></i><span>Maquillaje incluido</span></li><li><i class="bi bi-check2"></i><span>Impresiones en papel fine art</span></li></ul><a class="s-btn s-btn-alt" href="#contacto">Elegir Completo</a></article></div></div></div></section></div><div class="page" data-page="portafolio"><header class="page-hero"><img class="hero-bg ph-bg" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1600&q=70" alt=""><div class="ph-shade"></div>
+<div class="wrap ph-in"><h1>Portafolio</h1><p>Retratos, bodas, moda y paisaje.</p></div></header><section class="s-section s-gal"><div class="wrap"><div class="filters" role="group" aria-label="Filtrar por categoría"><button type="button" class="filt active" data-filter="all">Todo</button><button type="button" class="filt" data-filter="retrato">Retratos</button><button type="button" class="filt" data-filter="boda">Bodas</button><button type="button" class="filt" data-filter="moda">Moda</button><button type="button" class="filt" data-filter="paisaje">Paisaje</button></div><div class="gallery full"><a class="g-item" href="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1400&q=70" data-bs-toggle="modal" data-bs-target="#lb" data-full="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=1400&q=70" data-cat="retrato" aria-label="Ampliar: Retrato de estudio"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=70" alt="Retrato de estudio" loading="lazy"></a><a class="g-item" href="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=70" data-bs-toggle="modal" data-bs-target="#lb" data-full="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1400&q=70" data-cat="boda" aria-label="Ampliar: Sesión de boda"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=70" alt="Sesión de boda" loading="lazy"></a><a class="g-item" href="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1400&q=70" data-bs-toggle="modal" data-bs-target="#lb" data-full="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1400&q=70" data-cat="moda" aria-label="Ampliar: Editorial de moda"><img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=70" alt="Editorial de moda" loading="lazy"></a><a class="g-item" href="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1400&q=70" data-bs-toggle="modal" data-bs-target="#lb" data-full="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=1400&q=70" data-cat="paisaje" aria-label="Ampliar: Paisaje de montaña"><img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=800&q=70" alt="Paisaje de montaña" loading="lazy"></a><a class="g-item" href="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1400&q=70" data-bs-toggle="modal" data-bs-target="#lb" data-full="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1400&q=70" data-cat="retrato" aria-label="Ampliar: Retrato masculino"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=70" alt="Retrato masculino" loading="lazy"></a><a class="g-item" href="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1400&q=70" data-bs-toggle="modal" data-bs-target="#lb" data-full="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1400&q=70" data-cat="boda" aria-label="Ampliar: Pareja al atardecer"><img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=70" alt="Pareja al atardecer" loading="lazy"></a><a class="g-item" href="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1400&q=70" data-bs-toggle="modal" data-bs-target="#lb" data-full="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1400&q=70" data-cat="moda" aria-label="Ampliar: Look de temporada"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=70" alt="Look de temporada" loading="lazy"></a><a class="g-item" href="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1400&q=70" data-bs-toggle="modal" data-bs-target="#lb" data-full="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1400&q=70" data-cat="paisaje" aria-label="Ampliar: Bosque con niebla"><img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=70" alt="Bosque con niebla" loading="lazy"></a><a class="g-item" href="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=1400&q=70" data-bs-toggle="modal" data-bs-target="#lb" data-full="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=1400&q=70" data-cat="retrato" aria-label="Ampliar: Retrato natural"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=800&q=70" alt="Retrato natural" loading="lazy"></a></div></div></section></div><div class="page" data-page="nosotros"><header class="page-hero"><img class="hero-bg ph-bg" src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1600&q=70" alt=""><div class="ph-shade"></div>
+<div class="wrap ph-in"><h1>Nosotros</h1><p>Un estudio pequeño con mucha luz.</p></div></header><section class="s-section "><div class="wrap"><div class="grid md:grid-cols-2 gap-12 items-center">
+<div class="about-img"><img src="https://images.unsplash.com/photo-1554048612-b6a482bc67e5?auto=format&fit=crop&w=1000&q=70" alt="Fotógrafa preparando una sesión" loading="lazy"></div>
+<div><h2 class="s-title">Un estudio hecho para sentirse en casa</h2>
+<p class="s-sub">Somos un equipo pequeño de fotógrafos y editores. Trabajamos con luz natural y de estudio para crear imágenes honestas, sin poses forzadas.</p>
+<ol class="steps"><li><strong>Reserva</strong><span>Elige fecha y paquete; te confirmamos en un día.</span></li><li><strong>Sesión</strong><span>Te guiamos en poses y expresiones para que te veas natural.</span></li><li><strong>Edición</strong><span>Revelamos y retocamos cada imagen con cuidado.</span></li><li><strong>Entrega</strong><span>Recibes tu galería online lista para descargar y compartir.</span></li></ol></div></div></div></section><section class="s-section "><div class="wrap"><header class="s-head"><h2 class="s-title">El equipo</h2><p class="s-sub">Las personas detrás de la cámara.</p></header><div class="row g-4"><div class="col-md-4"><article class="s-card team h-100"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=600&q=70" alt="Sofía Marín" loading="lazy"><h3>Sofía Marín</h3><p>Fotógrafa principal</p></article></div><div class="col-md-4"><article class="s-card team h-100"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=70" alt="Diego Ruiz" loading="lazy"><h3>Diego Ruiz</h3><p>Iluminación y estudio</p></article></div><div class="col-md-4"><article class="s-card team h-100"><img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=70" alt="Lucía Paredes" loading="lazy"><h3>Lucía Paredes</h3><p>Edición y retoque</p></article></div></div></div></section><section class="s-section "><div class="wrap"><header class="s-head"><h2 class="s-title">Opiniones de clientes</h2><p class="s-sub">Lo que dicen quienes ya pasaron por nuestro estudio.</p></header><div class="row g-4"><div class="col-md-4"><article class="s-card quote h-100"><p>“Nos sentimos cómodos desde el primer minuto. Las fotos salieron naturales y llenas de luz.”</p><footer class="who"><img class="avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=70" alt="Valeria R." loading="lazy"><div><strong>Valeria R.</strong><span>Sesión de retrato</span></div></footer></article></div><div class="col-md-4"><article class="s-card quote h-100"><p>“Capturaron cada detalle sin que nos diéramos cuenta. Entrega rápida y trato impecable.”</p><footer class="who"><img class="avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=70" alt="Andrés M." loading="lazy"><div><strong>Andrés M.</strong><span>Boda</span></div></footer></article></div><div class="col-md-4"><article class="s-card quote h-100"><p>“Entendieron la idea de mi marca y la mejoraron. Volveré a trabajar con ellos.”</p><footer class="who"><img class="avatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=70" alt="Camila T." loading="lazy"><div><strong>Camila T.</strong><span>Campaña de moda</span></div></footer></article></div></div></div></section></div><div class="page" data-page="contacto"><header class="page-hero"><img class="hero-bg ph-bg" src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=1600&q=70" alt=""><div class="ph-shade"></div>
+<div class="wrap ph-in"><h1>Contacto</h1><p>Reserva tu sesión o pide una cotización.</p></div></header><section class="s-section "><div class="wrap"><header class="s-head"><h2 class="s-title">Hablemos de tu sesión</h2><p class="s-sub">Cuéntanos qué tienes en mente y te respondemos en menos de 24 horas.</p></header>
+<div class="grid lg:grid-cols-[1.2fr_.8fr] gap-10">
+<form class="s-card form" data-demo><div class="row g-3">
+<div class="col-md-6"><label class="s-label" for="f-n">Nombre</label><input class="s-input" id="f-n" type="text" required></div>
+<div class="col-md-6"><label class="s-label" for="f-e">Correo</label><input class="s-input" id="f-e" type="email" required></div>
+<div class="col-12"><label class="s-label" for="f-t">Tipo de sesión</label><select class="s-input" id="f-t"><option>Retrato</option><option>Boda</option><option>Moda y editorial</option><option>Producto</option><option>Familia</option><option>Evento</option></select></div>
+<div class="col-12"><label class="s-label" for="f-m">Mensaje</label><textarea class="s-input" id="f-m" rows="5"></textarea></div>
+<div class="col-12"><button class="s-btn" type="submit"><i class="bi bi-send"></i> Enviar mensaje</button><p class="ok" hidden>¡Gracias! Te responderemos muy pronto.</p></div>
+</div></form>
+<aside class="s-card info"><h3>Visítanos</h3>
+<ul class="clist"><li><i class="bi bi-geo-alt"></i><span>Calle Ejemplo 123, Ciudad</span></li><li><i class="bi bi-telephone"></i><span>+00 000 000 000</span></li><li><i class="bi bi-envelope"></i><span>hola@estudio-ejemplo.com</span></li><li><i class="bi bi-clock"></i><span>Lunes a sábado, 9:00 a 19:00</span></li></ul>
+<div class="soc-row"><a class="soc" href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a><a class="soc" href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a><a class="soc" href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a><a class="soc" href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a><a class="soc" href="#" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a><a class="soc" href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a></div></aside></div></div></section></div>
+<footer class="foot"><div class="wrap">
+<div class="row g-4">
+<div class="col-lg-5"><a class="s-brand" href="#inicio"><i class="bi bi-circle"></i><span>Claro Estudio</span></a>
+<p class="mt-3">Estudio fotográfico de retrato, boda y editorial. Luz natural, calma y precisión.</p></div>
+<div class="col-6 col-lg-3"><h4>Explorar</h4><ul class="flinks"><li><a href="#inicio">Inicio</a></li><li><a href="#servicios">Servicios</a></li><li><a href="#portafolio">Portafolio</a></li><li><a href="#nosotros">Nosotros</a></li><li><a href="#contacto">Contacto</a></li></ul></div>
+<div class="col-6 col-lg-4"><h4>Síguenos</h4><div class="soc-row"><a class="soc" href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a><a class="soc" href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a><a class="soc" href="#" aria-label="TikTok"><i class="bi bi-tiktok"></i></a><a class="soc" href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a><a class="soc" href="#" aria-label="Pinterest"><i class="bi bi-pinterest"></i></a><a class="soc" href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp"></i></a></div><p class="mt-3 small">hola@estudio-ejemplo.com</p></div>
+</div>
+<p class="copy">© <span id="y"></span> Claro Estudio. Todos los derechos reservados.</p>
+</div></footer>
+<div class="modal fade" id="lb" tabindex="-1" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content s-modal"><button type="button" class="btn-close s-close" data-bs-dismiss="modal" aria-label="Cerrar"></button><img id="lbImg" class="w-100" alt="Vista ampliada"></div></div></div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const fb=i=>{if(!i.dataset.fb){i.dataset.fb=1;i.src='https://picsum.photos/seed/foto'+(i.alt||'x').length+'/900/1100'}};
+document.querySelectorAll('img').forEach(i=>{i.addEventListener('error',()=>fb(i));if(i.complete&&i.naturalWidth===0)fb(i)});
+const lb=document.getElementById('lb');
+if(lb){lb.addEventListener('show.bs.modal',e=>{document.getElementById('lbImg').src=e.relatedTarget.dataset.full})}
+document.querySelectorAll('form[data-demo]').forEach(f=>f.addEventListener('submit',e=>{e.preventDefault();f.querySelector('.ok').hidden=false;f.reset()}));
+document.getElementById('y').textContent=new Date().getFullYear();
+document.querySelectorAll('#nav a').forEach(a=>a.addEventListener('click',()=>{const c=document.getElementById('nav');if(c.classList.contains('show'))bootstrap.Collapse.getOrCreateInstance(c).hide()}));
+document.querySelectorAll('.filt').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.filt').forEach(x=>x.classList.remove('active'));b.classList.add('active');const f=b.dataset.filter;document.querySelectorAll('.gallery .g-item').forEach(i=>i.classList.toggle('is-hidden',f!=='all'&&i.dataset.cat!==f))}));
+
+const pages=[...document.querySelectorAll('.page')];
+function route(){let h=location.hash.replace('#','')||'inicio';if(!pages.some(p=>p.dataset.page===h))h='inicio';
+pages.forEach(p=>p.classList.toggle('active',p.dataset.page===h));
+document.querySelectorAll('[data-nav]').forEach(a=>a.classList.toggle('active',a.dataset.nav===h));window.scrollTo(0,0)}
+addEventListener('hashchange',route);route();
+</script>
+</body>
+</html>
